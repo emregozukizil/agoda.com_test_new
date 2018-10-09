@@ -39,31 +39,45 @@ namespace agoda.com_test
 
             Thread.Sleep(2000);
 
+            try
+            {
+                OleDbConnection xlsxbaglanti = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\\Users\\Yasin ERAYDIN\\Desktop\\agoda.com_test\\test_data.xlsx';Extended Properties=Excel 8.0;");
+                DataTable tablo = new DataTable();
 
-            OleDbConnection xlsxbaglanti = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source='D:\\bel3.xls';Extended Properties=Excel 8.0;");
-            DataTable tablo = new DataTable();
-            
+                int kayitsay = 0;
+                xlsxbaglanti.Open();
+                OleDbCommand komut = new OleDbCommand("SELECT * FROM [Sayfa1]", xlsxbaglanti);
+                OleDbDataReader oku = komut.ExecuteReader();
+                while (oku.Read())
+                {
+                    string sehir = oku["Sehir"].ToString();
+                    string tarih = oku["Tarih1"].ToString();
+                    string tarih2 = oku["Tarih2"].ToString();
+                    string cocuksecim = oku["Cocuk"].ToString();
+                    string cocukyas = oku["CocukYas"].ToString();
+                    kayitsay++;
 
-            int kayitsay = 0; 
-            xlsxbaglanti.Open(); 
-            OleDbCommand komut = new OleDbCommand("SELECT * FROM [YeniSayfa$]", xlsxbaglanti); 
-            OleDbDataReader oku = komut.ExecuteReader(); 
-            while (oku.Read())
-            {               
-                string sehir = oku["Sehir"].ToString();
-                string tarih = oku["Tarih1"].ToString();
-                string tarih2 = oku["Tarih2"].ToString();
-                string cocuksecim = oku["Cocuk"].ToString();
-                string cocukyas = oku["CocukYas"].ToString();
-                kayitsay++;
+                    rezervasyon.rezervasyondetay(sehir, tarih, tarih2, cocuksecim, cocukyas);
+                    Thread.Sleep(2000);
+                    Filtreler.Filtrele();                    
+                }
+                xlsxbaglanti.Close(); 
+                kayitsay = 0; 
+            }
+            catch
+            {
+                string sehir = "Roma";
+                string tarih = "20.04.2019";
+                string tarih2 = "23.04.2019";
+                string cocuksecim = "1";
+                string cocukyas = "2";
 
                 rezervasyon.rezervasyondetay(sehir, tarih, tarih2, cocuksecim, cocukyas);
                 Thread.Sleep(2000);
                 Filtreler.Filtrele();
             }
 
-            xlsxbaglanti.Close(); //Bağlantıyı kapatıyoruz.
-            kayitsay = 0; //Sayacı sıfırlıyoruz.
+
 
 
 
