@@ -31,23 +31,12 @@ namespace agoda.com_test
             actions.Perform();
             Program.driver.FindElement(By.XPath("//*[@id='paymentoptionFilterList']/div[2]/ul/li[2]/span/span[2]")).Click();
             Thread.Sleep(5000);
-            Program.driver.FindElement(By.ClassName("LazyLoad")).Click();
+            Program.driver.FindElement(By.XPath("//*[@id='hotel-1255297-container']/div/div/section/div[3]/ul/li[1]/h3")).Click();
             Thread.Sleep(1000);         
             element = Program.driver.FindElement(By.ClassName("ChildRoomsList-bookButtonInput"));
             actions.MoveToElement(element);
             actions.Perform();
-
             Thread.Sleep(1000);
-
-
-
-
-
-
-
         }
-
-
-
     }
 }

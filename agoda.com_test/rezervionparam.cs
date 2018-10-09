@@ -11,13 +11,7 @@ namespace agoda.com_test
     public static class rezervasyon
     {
 
-        public static void rezervasyondetay(
-            string lokasyon,
-            string dtime1, 
-            string dtime2,     
-            string cocukcheck, 
-            Int16 cocuksay
-            )
+        public static void rezervasyondetay(string lokasyon, string dtime1, string dtime2,string cocukcheck, string cocuksay)
             {
 
             Program.driver.FindElement(By.ClassName(Constants.lokasyon)).SendKeys(lokasyon.ToString());
@@ -27,7 +21,16 @@ namespace agoda.com_test
             Program.driver.FindElement(By.ClassName("SearchBoxTextDescription")).Click();
             Thread.Sleep(2000);
             // Thread.Sleep(5000);
-            // 
+
+           // Program.driver.FindElement(By.ClassName("SearchBoxTextDescription__title")).Click();
+           //// Program.driver.Manage().Timeouts().ImplicitWait(10, TimeUnit.SECONDS);
+           // for (int i = 0; i < 5; i++)
+           // {
+           //     Program.driver.FindElement(By.CssSelector("span.DayPicker-NavButton.DayPicker-NavButton--next.ficon.ficon-18.ficon-edge-arrow-right")).Click();
+           //    // Program.driver.FindElement(By.CssSelector("span.DayPicker-NavButton.DayPicker-NavButton--next.ficon.ficon-18.ficon-edge-arrow-right").timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+           // }
+           // Program.driver.FindElement(By.CssSelector(".DayPicker-Months .DayPicker-Month:nth-of-type(2) .DayPicker-Week:nth-of-type(3) .DayPicker-Day--weekends:nth-of-type(6) .DayPicker-Day__label")).Click();
+           // // 
             // Program.driver.FindElement(By.ClassName("DayPicker-NavButton")).Click();            
             // Program.driver.FindElement(By.ClassName("DayPicker-NavButton")).Click();
             // IJavaScriptExecutor js = (IJavaScriptExecutor)Program.driver;
@@ -41,24 +44,16 @@ namespace agoda.com_test
 
 
             //Program.driver.FindElement(By.ClassName(Constants.kisisay)).Click();
-            //if (cocukcheck == "var")
+            //if (cocukcheck == "1")
             //{
             //    Program.driver.FindElement(By.ClassName(Constants.cocukcheck)).Click();
             //    Program.driver.FindElement(By.ClassName(Constants.cocukyas)).Click();
             //    Program.driver.FindElement(By.ClassName("DropdownInput__option")).Click();
             //    Program.driver.FindElement(By.XPath(".//*[@id='DropdownInput__option']/value='2'")).Click();
             //}
-            Program.driver.FindElement(By.ClassName("Searchbox__searchButton__text")).Click();
-            
+            Program.driver.FindElement(By.ClassName("Searchbox__searchButton__text")).Click();            
         }
 
-
-
-        static Int16 kisisay = 2;
-        static DateTime dtime1 = DateTime.Parse("20.04.2019");
-        static DateTime dtime2 = DateTime.Parse("23.04.2019");
-        static string lokasyon = "Roma";
-        static Int32 butce = 500;
     }
 
     //public static class rezervasyonparam2
