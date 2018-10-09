@@ -31,7 +31,7 @@ namespace agoda.com_test
             Thread.Sleep(2000);
             Filtreler.Filtrele();
 
-            //string lokasyon,
+            //string lokasyon,,,,
             //DateTime dtime1,
             //DateTime dtime2,
             //string cocukcheck,
